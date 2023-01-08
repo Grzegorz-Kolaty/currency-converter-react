@@ -2,56 +2,41 @@ import { useState } from "react";
 import "./style.css";
 
 const Form = () => {
+  const [currencyInput, onSelectCurrencyInput] = useState("Złoty");
+
+  const [currencyOutput, onSelectCurrencyOutput] = useState("Euro");
+
+
   const [amount, setAmount] = useState("");
+
   const onFormSubmit = (event) => {
     event.preventDefault();
-    //if (amount !== "") 
+    console.log(event);
   };
 
   return (
-    <form>
-      <input />
+    <form onSubmit={onFormSubmit}>
+      <input
+        value={amount}
+        onChange={({ target }) => setAmount(target.value)}
+      />
+      <select
+        value={currencyInput}
+        onChange={({ target }) => onSelectCurrencyInput(target.value)}>
+        <option value="4">Euro</option>
+        <option value="3">Dollars</option>
+        <option value="1">Złoty</option>
+      </select>
+      <select
+        value={currencyOutput}
+        onChange={({ target }) => onSelectCurrencyOutput(target.value)}>
+        <option>Euro</option>
+        <option>Dollars</option>
+        <option>Złoty</option>
+      </select>
       <button>Calculate!</button>
-    </form> 
-)
+    </form>
+  )
+};
 
-
-  /*return (
-    <form className="form">
-      <label className="form__labelText">
-        <input
-          className="amount--style"
-          name="form"
-          type="number"
-          min="1"
-          step="any"
-          placeholder="1"
-          required />
-      </label>
-      <label className="form__labelText">
-        <select
-          className="currencyIn--style"
-          type="select"
-          required>
-          <option value="1.00" selected>PLN</option>
-          <option value="4.82">EUR</option>
-          <option value="4.96">USD</option>
-        </select>
-      </label>
-      <label className="form__labelExchange">
-        <select
-          className="currencyOut--style"
-          type="select"
-          required>
-          <option value="1.00">PLN</option>
-          <option value="4.82" selected>EUR</option>
-          <option value="4.96">USD</option>
-        </select>
-      </label>
-    </form >
-  )*/
-
-}; 
-
-  
 export default Form;

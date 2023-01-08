@@ -8,11 +8,7 @@ import Form from "./Form";
 function App() {
   return (
     <Container>
-      <Header title="Extraordinary Currency Converter" />
-      <Section title="Convert" />
       <Form />
-      <Section title="Outcome" />
-      <Section title="Footer" />
     </Container>
   )
 };
