@@ -2,8 +2,8 @@ import "./style.css";
 
 const Outcome = () => {
   return (
-    <div>
-
+    <div className="recieve">
+      <p>Exchange value: 0.21 EUR</p>
     </div>
   )
 };
