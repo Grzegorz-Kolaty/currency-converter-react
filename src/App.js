@@ -1,7 +1,7 @@
 import Container from "./Container";
 import Header from "./Header";
 import Footer from "./Footer";
-import Outcome from "./Outcome";
+import Result from "./Result";
 import Form from "./Form";
 
 function App() {
@@ -21,14 +21,15 @@ function App() {
       name: "USD",
       value: 3
     }
-  ]
+  ];
+
   return (
     <Container>
-      <Header />
+      <Header title="Currency connverter - just to make things easier!" />
       <Form
         currencies={currencies} />
-      <Outcome />
-      <Footer />
+      <Result title="Exchange value:" />
+      <Footer title="Copyright 2023 YouCode Industries" />
     </Container>
   )
 };
