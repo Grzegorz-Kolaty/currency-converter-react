@@ -1,9 +1,9 @@
 import "./style.css";
 
-const Result = ({ title }) => {
+const Result = ({ title, result, currencyOut }) => {
   return (
     <div className="result">
-      <span>{title}</span>
+      <h2>{title} {result} {currencyOut}</h2>
     </div>
   )
 };
