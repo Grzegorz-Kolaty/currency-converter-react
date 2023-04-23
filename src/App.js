@@ -6,11 +6,12 @@ import Result from "./Result";
 import Form from "./Form";
 
 function App() {
-  const [result, setResult] = useState("10 PLN");
+  const [result, setResult] = useState("");
+
   const currencies = [
     { id: 1, name: "PLN", value: 1 },
-    { id: 2, name: "EUR", value: 4 },
-    { id: 3, name: "USD", value: 3 }
+    { id: 2, name: "EUR", value: 4.66 },
+    { id: 3, name: "USD", value: 4.20 }
   ];
 
   return (
