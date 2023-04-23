@@ -5,7 +5,7 @@
 This website has only one specific function, look:
 👆 https://grzegorz-kolaty.github.io/currency-converter-react/ 👆
 
-<img src="public/images/how_to_use.gif" alt="howToUse" width="900"/>
+<img src="public/images/how_to_use.gif" alt="howToUse" width="834"/>
 
 ## 🧑 Do not forget to see my homepage❕
 
