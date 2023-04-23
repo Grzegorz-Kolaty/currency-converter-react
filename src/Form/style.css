@@ -1,15 +1,28 @@
 .form__fieldset {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-auto-rows: minmax(100px, auto);
     align-items: center;
-    gap: 15px;
+    grid-gap: 20px;
     border-radius: 10px;
     color: white;
     background-color: #0000006b;
+    border-style: none;
     box-shadow: 0px 0px 200px 50px rgb(0, 0, 0);
-    padding: 30px;
     margin: 0;
+    padding: 10px;
+}
+
+.form__fieldsetInputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 10px 20px;
+    padding: 10px;
+}
+
+.form__fieldsetButton {
+    display: grid;
+    align-content: center;
+    justify-items: stretch;
 }
 
 .form__legend {
@@ -26,43 +39,40 @@
 }
 
 .form__input {
-    width: 150px;
     height: 50px;
-    border: none;
     box-shadow: 0px 0px 20px 3px black;
     background-color: rgba(0, 0, 0, 0.647);
     border-radius: 5px;
     padding: 15px;
     color: white;
     font-weight: 700;
-    outline: none;
     margin: 0;
+    outline: none;
+    border: none;
 }
 
 .form__select {
-    width: 150px;
     height: 50px;
-    border: none;
     box-shadow: 0px 0px 20px 3px black;
     background-color: hsla(181, 49%, 30%, 0.882);
     border-radius: 5px;
     padding: 15px;
     color: white;
-    outline: none;
     margin: 0;
+    outline: none;
+    border: none;
 }
 
 .form__button {
-    width: 150px;
     height: 50px;
-    border: none;
     box-shadow: 0px 0px 20px 3px black;
     background-color: #277172e1;
     border-radius: 5px;
     padding: 15px;
     color: white;
+    transition: 200ms;
     outline: none;
-    transition: 150ms;
+    border: none;
 }
 
 .form__button:hover {
@@ -71,5 +81,5 @@
 }
 
 .form__button:active {
-    background-color: white;
+    background-color: transparent;
 }
