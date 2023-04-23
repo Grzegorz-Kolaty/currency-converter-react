@@ -22,8 +22,6 @@
 .form__label {
     display: flex;
     flex-direction: column;
-    width: 150px;
-    height: 100px;
     gap: 10px;
 }
 

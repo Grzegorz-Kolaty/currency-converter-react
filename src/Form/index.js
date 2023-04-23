@@ -3,15 +3,20 @@ import "./style.css";
 
 const Form =
   ({ setResult, currencies }) => {
-    const [addAmount, setAmount] = useState("10");
-    const [currencyIn, currencyInValue] = useState("1");
-    const [currencyOut, currencyOutValue] = useState("1");
-    const [selectedCurrency, setSelectedCurrency] = useState("PLN");
+    const [addAmount, setAmount] = useState(10);
+    const [currencyIn, currencyInValue] = useState(1);
+    const [currencyOut, currencyOutValue] = useState(1);
 
     const onFormSubmit = (event) => {
       event.preventDefault();
-      const result = (addAmount * currencyIn / currencyOut);
-      setResult(`${result} ${selectedCurrency}`);
+      const result = (+addAmount * +currencyIn / +currencyOut);
+      const currencyOutName = currencies.find(currency => currency.value === +currencyOut);
+      setResult(`${result.toFixed(2)} ${currencyOutName.name}`);
+    };
+
+    const switchCurrencies = () => {
+      currencyInValue(currencyOut);
+      currencyOutValue(currencyIn);
     };
 
     return (
@@ -25,12 +30,11 @@ const Form =
               className="form__input"
               type="number"
               min="1"
+              step="any"
               autoFocus />
           </label>
           <label className="form__label">Currency
-            <select
-              className="form__select"
-              value={currencyIn}
+            <select className="form__select" value={currencyIn}
               onChange={({ target }) => {
                 currencyInValue(target.value);
               }}>
@@ -42,15 +46,15 @@ const Form =
             </select>
           </label>
           <label className="form__label">Switch
-            <p className="form__select">&#8596;</p>
+            <button
+              onClick={switchCurrencies}
+              className="form__button">
+              &#8596;</button>
           </label>
           <label className="form__label">Exchange
-            <select
-              className="form__select"
-              value={currencyOut}
+            <select className="form__select" value={currencyOut}
               onChange={({ target }) => {
                 currencyOutValue(target.value);
-                setSelectedCurrency(target.options[target.selectedIndex].text);
               }}>
               {currencies.map((currency) => (
                 <option key={currency.id} value={currency.value}>
