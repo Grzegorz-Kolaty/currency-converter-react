@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { currencies } from './currencies';
 import "./style.css";
 
 const Form =
-  ({ setResult, currencies }) => {
+  ({ setResult }) => {
     const [addAmount, setAmount] = useState(10);
     const [currencyIn, currencyInValue] = useState(1);
     const [currencyOut, currencyOutValue] = useState(1);
