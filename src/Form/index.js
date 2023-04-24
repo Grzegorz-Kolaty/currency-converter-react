@@ -9,9 +9,14 @@ const Form =
 
     const onFormSubmit = (event) => {
       event.preventDefault();
+
       const result = (+addAmount * +currencyIn / +currencyOut);
       const currencyOutName = currencies.find(currency => currency.value === +currencyOut);
-      setResult(`${result.toFixed(2)} ${currencyOutName.name}`);
+
+      setResult({
+        calculatedResult: result,
+        currencyOutName: currencyOutName.name
+      });
     };
 
     const switchCurrencies = () => {
@@ -65,7 +70,7 @@ const Form =
               </select>
             </label>
           </div>
-            <button className="form__button">Calculate</button>
+          <button className="form__button">Calculate</button>
         </fieldset>
       </form >
     );
