@@ -5,12 +5,11 @@ import "./style.css";
 const Form =
   ({ setResult }) => {
     const [addAmount, setAmount] = useState(10);
-    const [currencyIn, currencyInValue] = useState(1);
-    const [currencyOut, currencyOutValue] = useState(1);
+    const [currencyIn, currencyInValue] = useState(currencies[0].value);
+    const [currencyOut, currencyOutValue] = useState(currencies[0].value);
 
     const onFormSubmit = (event) => {
       event.preventDefault();
-
       const result = (+addAmount * +currencyIn / +currencyOut);
       const currencyOutName = currencies.find(currency => currency.value === +currencyOut);
 
