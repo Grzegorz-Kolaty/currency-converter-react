@@ -4,9 +4,11 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Result from "./Result";
 import Form from "./Form";
+import Date from "./Date";
 
 function App() {
   const [result, setResult] = useState("");
+  Date();
 
   return (
     <Container>
@@ -16,6 +18,6 @@ function App() {
       <Footer title="Copyright 2023 YouCode Industries" />
     </Container>
   )
-}
+};
 
 export default App;
