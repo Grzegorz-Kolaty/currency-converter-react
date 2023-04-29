@@ -9,12 +9,12 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  background-image: url("https://i.postimg.cc/HnTvLvXn/banknotes-4073891.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   font-size: large;
   font-weight: 400;
-  color: whitesmoke;
+  color: white;
+  background-image: url("https://i.postimg.cc/HnTvLvXn/banknotes-4073891.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
