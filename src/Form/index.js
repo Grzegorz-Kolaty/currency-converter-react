@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { currencies } from './currencies';
+import Date from "./Date";
 import "./style.css";
 
 const Form =
@@ -26,6 +27,7 @@ const Form =
 
     return (
       <form className="form" onSubmit={onFormSubmit}>
+        <Date title="Dzisiaj jest " />
         <fieldset className="form__fieldset">
           <legend className="form__legend">Currency calculator</legend>
           <div className="form__fieldsetInputs">
