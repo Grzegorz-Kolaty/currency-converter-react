@@ -4,11 +4,11 @@ import "./style.css";
 const DateComponent = ({ title }) => {
   const [date, setDate] = useState(new Date());
   useEffect(() => {
-    const interval = setInterval(() => {
+    const intervalId = setInterval(() => {
       setDate(new Date());
     }, 1000);
-    return () => clearInterval(interval);
-  }, [setDate]);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div className="date">{title}
