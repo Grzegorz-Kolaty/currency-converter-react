@@ -4,7 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Result from "./Result";
 import Form from "./Form";
-import DateComponent from "./Date";
+import Date from "./Date";
 
 function App() {
   const [result, setResult] = useState("");
@@ -13,7 +13,7 @@ function App() {
     <Container>
       <Header title="Currency connverter - just to make things easier!" />
       <Form setResult={setResult} />
-      <DateComponent title="Dzisiaj jest: " />
+      <Date title="Dzisiaj jest " />
       <Result title="Exchange value: " result={result} />
       <Footer title="Copyright 2023 YouCode Industries" />
     </Container>
