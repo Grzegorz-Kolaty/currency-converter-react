@@ -36,8 +36,7 @@ const Form =
                 className="form__input"
                 type="number"
                 min="1"
-                step="any"
-                autoFocus />
+                step="any" />
             </label>
             <label className="form__label">Currency
               <select className="form__select" value={currencyIn}
