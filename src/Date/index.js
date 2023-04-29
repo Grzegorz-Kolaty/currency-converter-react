@@ -1,18 +1,24 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from "react";
 import "./style.css";
 
-const DateWithFormat = () => {
-    const date = new Date();
-    const dateAndTimeFormatted = date.toLocaleDateString("pl-PL",
-        { weekday: "long", day: "numeric", month: "long" })
-        + ", "
-        + date.toLocaleTimeString("pl-PL");
+const DateComponent = ({ title }) => {
+  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [setDate]);
 
-    return (
-        <div >
-            <h2>{dateAndTimeFormatted}</h2>
-        </div>
-    );
+  return (
+    <div className="date">{title}
+      {date.toLocaleDateString("pl-PL", {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+      })}, {date.toLocaleTimeString("pl-PL")}
+    </div>
+  );
 };
 
-export default DateWithFormat;
+export default DateComponent;
