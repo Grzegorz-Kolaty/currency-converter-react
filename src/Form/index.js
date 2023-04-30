@@ -27,7 +27,7 @@ const Form =
 
     return (
       <form className="form" onSubmit={onFormSubmit}>
-        <Date title="Dzisiaj jest " />
+        <Date />
         <fieldset className="form__fieldset">
           <legend className="form__legend">Currency calculator</legend>
           <div className="form__fieldsetInputs">
