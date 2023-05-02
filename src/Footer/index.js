@@ -1,9 +1,7 @@
-import "./style.css";
+import { FooterHead } from "./styled";
 
 const Footer = () => (
-  <footer className="footer">
-    Copyright 2022 YouCode Industries
-  </footer>
+  <FooterHead>Copyright 2022 YouCode Industries</FooterHead>
 );
 
 export default Footer;
