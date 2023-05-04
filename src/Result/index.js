@@ -1,11 +1,11 @@
-import "./style.css";
+import { Summary } from "./styled";
 
 const Result = ({ title, result }) => (
-  <div className="result">
+  <Summary>
     {title}
     {result.calculatedResult != null ? result.calculatedResult.toFixed(2) : ''}
     <b>&nbsp;{result.currencyOutName}</b>
-  </div>
+  </Summary>
 );
 
 export default Result;
