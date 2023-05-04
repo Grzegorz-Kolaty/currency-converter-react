@@ -1,7 +1,9 @@
+import { theme, Formular, Fieldset, Legend, Label, Datafield } from "./styled";
+import { ThemeProvider } from "styled-components";
 import { useState } from 'react';
 import { currencies } from './currencies';
 import Date from "./Date";
-import "./style.css";
+
 
 const Form =
   ({ setResult }) => {
@@ -26,22 +28,22 @@ const Form =
     };
 
     return (
-      <form className="form" onSubmit={onFormSubmit}>
-        <Date />
-        <fieldset className="form__fieldset">
-          <legend className="form__legend">Currency calculator</legend>
-          <div className="form__fieldsetInputs">
-            <label className="form__label">Amount
-              <input
+      <ThemeProvider theme={theme}>
+        <Formular onSubmit={onFormSubmit}>
+          <Date />
+          <Fieldset>
+            <Legend>Currency calculator</Legend>
+            <Label>Amount
+              <Datafield as="input"
                 value={addAmount}
                 onChange={({ target }) => setAmount(target.value)}
                 className="form__input"
                 type="number"
                 min="1"
                 step="any" />
-            </label>
-            <label className="form__label">Currency
-              <select className="form__select" value={currencyIn}
+            </Label>
+            <Label>Currency
+              <Datafield as="select" value={currencyIn}
                 onChange={({ target }) => {
                   currencyInValue(target.value);
                 }}>
@@ -50,16 +52,16 @@ const Form =
                     {currency.name}
                   </option>
                 ))}
-              </select>
-            </label>
-            <label className="form__label">Switch
-              <button
-                onClick={switchCurrencies}
-                className="form__button">
-                &#8596;</button>
-            </label>
-            <label className="form__label">Exchange
-              <select className="form__select" value={currencyOut}
+              </Datafield>
+            </Label>
+            <Label>Switch
+              <Datafield button as="button"
+                onClick={switchCurrencies}>
+                &#8596;
+              </Datafield>
+            </Label>
+            <Label>Exchange
+              <Datafield as="select" value={currencyOut}
                 onChange={({ target }) => {
                   currencyOutValue(target.value);
                 }}>
@@ -68,12 +70,14 @@ const Form =
                     {currency.name}
                   </option>
                 ))}
-              </select>
-            </label>
-          </div>
-          <button className="form__button">Calculate</button>
-        </fieldset>
-      </form >
+              </Datafield>
+            </Label>
+            <Label submitter>
+              <Datafield button as="button">Calculate</Datafield>
+            </Label>
+          </Fieldset>
+        </Formular>
+      </ThemeProvider>
     );
   };
 
