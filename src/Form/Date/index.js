@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./style.css";
+import { StyledDate } from "./styled";
 
 const DateComponent = () => {
   const [date, setDate] = useState(new Date());
@@ -22,9 +22,7 @@ const DateComponent = () => {
   );
 
   return (
-    <div className="date">
-      <span>Dzisiaj jest&nbsp;{DateFormatted(date)}</span>
-    </div>
+      <StyledDate>Dzisiaj jest&nbsp;{DateFormatted(date)}</StyledDate>
   );
 };
 
