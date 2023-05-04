@@ -22,7 +22,9 @@ export const theme = {
         colorTealBrighter: "hsla(181, 49%, 35%, 0.882)",
         colorBlack: "black",
         colorDimmed: "hsla(0, 0%, 0%, 0.585)"
-    }
+    },
+
+    boxShadow: "0px 0px 20px 1px black"
 };
 
 export const Formular = styled.form`
@@ -36,13 +38,14 @@ export const Fieldset = styled.fieldset`
     border: ${({ theme }) => theme.border.style};
     border-radius: ${({ theme }) => theme.border.radius};
     padding: ${({ theme }) => theme.spacing.padding};
-    margin: 0px;
     background-color: ${({ theme }) => theme.background.colorDimmed};
-    box-shadow: 0px 0px 200px 50px black;
+    
+    box-shadow: ${({ theme }) => theme.boxShadow};
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     align-items: center;
+    margin: 0px;
 `;
 
 export const Legend = styled.legend`
@@ -70,7 +73,7 @@ export const Datafield = styled.div`
     border-radius: ${({ theme }) => theme.border.radius};
     padding: ${({ theme }) => theme.spacing.padding};
     margin: ${({ theme }) => theme.spacing.margin};
-    box-shadow: 0px 0px 20px 3px black;
+    box-shadow: ${({ theme }) => theme.boxShadow};
     background-color: ${({ theme }) => theme.background.colorDimmed};
     transition: 300ms;
 
