@@ -1,8 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+import background from "./background.jpg";
+
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -21,18 +23,19 @@ const GlobalStyle = createGlobalStyle`
     font-size: large;
     font-weight: 400;
     color: white;
-    background-image: url("https://i.postimg.cc/HnTvLvXn/banknotes-4073891.jpg");
+    background-image: url("${background}");
     background-repeat: no-repeat;
     background-size: cover;
   }
 `;
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
     <GlobalStyle />
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 reportWebVitals();
