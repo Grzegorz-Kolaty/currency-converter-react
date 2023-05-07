@@ -1,5 +1,5 @@
 import { Formular, Fieldset, Legend, Label, Datafield } from "./styled";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { currencies } from './currencies';
 import Date from "./Date";
 
@@ -9,11 +9,16 @@ const Form =
     const [addAmount, setAmount] = useState(10);
     const [currencyIn, currencyInValue] = useState(currencies[0].value);
     const [currencyOut, currencyOutValue] = useState(currencies[0].value);
+    const inputRef = useRef(null);
+    const focusInput = () => {
+      inputRef.current.focus();
+    };
 
     const onFormSubmit = (event) => {
       event.preventDefault();
       const result = (+addAmount * +currencyIn / +currencyOut);
       const currencyOutName = currencies.find(currency => currency.value === +currencyOut);
+      setAmount("");
 
       setResult({
         calculatedResult: result,
@@ -27,54 +32,57 @@ const Form =
     };
 
     return (
-        <Formular onSubmit={onFormSubmit}>
-          <Date />
-          <Fieldset>
-            <Legend>Currency calculator</Legend>
-            <Label>Amount
-              <Datafield as="input"
-                value={addAmount}
-                onChange={({ target }) => setAmount(target.value)}
-                className="form__input"
-                type="number"
-                min="1"
-                step="any" />
-            </Label>
-            <Label>Currency
-              <Datafield as="select" value={currencyIn}
-                onChange={({ target }) => {
-                  currencyInValue(target.value);
-                }}>
-                {currencies.map((currency) => (
-                  <option key={currency.id} value={currency.value}>
-                    {currency.name}
-                  </option>
-                ))}
-              </Datafield>
-            </Label>
-            <Label>Switch
-              <Datafield button as="button"
-                onClick={switchCurrencies}>
-                &#8596;
-              </Datafield>
-            </Label>
-            <Label>Exchange
-              <Datafield as="select" value={currencyOut}
-                onChange={({ target }) => {
-                  currencyOutValue(target.value);
-                }}>
-                {currencies.map((currency) => (
-                  <option key={currency.id} value={currency.value}>
-                    {currency.name}
-                  </option>
-                ))}
-              </Datafield>
-            </Label>
-            <Label submitter>
-              <Datafield button as="button">Calculate</Datafield>
-            </Label>
-          </Fieldset>
-        </Formular>
+      <Formular onSubmit={onFormSubmit}>
+        <Date />
+        <Fieldset>
+          <Legend>Currency calculator</Legend>
+          <Label>Amount
+            <Datafield as="input"
+              value={addAmount}
+              onChange={({ target }) => setAmount(target.value)}
+              className="form__input"
+              type="number"
+              min="1"
+              step="any"
+              ref={inputRef} />
+          </Label>
+          <Label>Currency
+            <Datafield as="select" value={currencyIn}
+              onChange={({ target }) => {
+                currencyInValue(target.value);
+              }}>
+              {currencies.map((currency) => (
+                <option key={currency.id} value={currency.value}>
+                  {currency.name}
+                </option>
+              ))}
+            </Datafield>
+          </Label>
+          <Label>Switch
+            <Datafield button as="button"
+              onClick={switchCurrencies}>
+              &#8596;
+            </Datafield>
+          </Label>
+          <Label>Exchange
+            <Datafield as="select" value={currencyOut}
+              onChange={({ target }) => {
+                currencyOutValue(target.value);
+              }}>
+              {currencies.map((currency) => (
+                <option key={currency.id} value={currency.value}>
+                  {currency.name}
+                </option>
+              ))}
+            </Datafield>
+          </Label>
+          <Label submitter>
+            <Datafield button as="button"
+              onClick={focusInput}>Calculate
+            </Datafield>
+          </Label>
+        </Fieldset>
+      </Formular>
     );
   };
 
