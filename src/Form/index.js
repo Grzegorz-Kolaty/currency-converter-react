@@ -1,5 +1,4 @@
-import { theme, Formular, Fieldset, Legend, Label, Datafield } from "./styled";
-import { ThemeProvider } from "styled-components";
+import { Formular, Fieldset, Legend, Label, Datafield } from "./styled";
 import { useState } from 'react';
 import { currencies } from './currencies';
 import Date from "./Date";
@@ -28,7 +27,6 @@ const Form =
     };
 
     return (
-      <ThemeProvider theme={theme}>
         <Formular onSubmit={onFormSubmit}>
           <Date />
           <Fieldset>
@@ -77,7 +75,6 @@ const Form =
             </Label>
           </Fieldset>
         </Formular>
-      </ThemeProvider>
     );
   };
 

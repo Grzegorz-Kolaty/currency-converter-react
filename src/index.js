@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createGlobalStyle } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import background from "./background.jpg";
 
 
@@ -29,12 +29,42 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const theme = {
+  font: {
+    color: "white",
+    weight: 700
+  },
+
+  border: {
+    style: "none",
+    radius: "5px"
+  },
+
+  spacing: {
+    margin: "10px",
+    padding: "20px"
+  },
+
+  background: {
+    colorTransparent: "transparent",
+    colorTeal: "hsla(181, 49%, 30%, 0.882)",
+    colorTealBrighter: "hsla(181, 49%, 35%, 0.882)",
+    colorBlack: "black",
+    colorDimmed: "hsla(0, 0%, 0%, 0.585)",
+    colorMineralGreen: "#344c40"
+  },
+
+  boxShadow: "0px 0px 20px 1px black"
+};
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

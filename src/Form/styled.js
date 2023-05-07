@@ -1,32 +1,5 @@
 import styled, { css } from "styled-components";
 
-export const theme = {
-    font: {
-        color: "white",
-        weight: 700
-    },
-
-    border: {
-        style: "none",
-        radius: "5px"
-    },
-
-    spacing: {
-        margin: "10px",
-        padding: "20px"
-    },
-
-    background: {
-        colorTransparent: "transparent",
-        colorTeal: "hsla(181, 49%, 30%, 0.882)",
-        colorTealBrighter: "hsla(181, 49%, 35%, 0.882)",
-        colorBlack: "black",
-        colorDimmed: "hsla(0, 0%, 0%, 0.585)"
-    },
-
-    boxShadow: "0px 0px 20px 1px black"
-};
-
 export const Formular = styled.form`
     margin-bottom: 20px;
     background-color: ${({ theme }) => theme.background.colorTransparent};
@@ -74,7 +47,7 @@ export const Datafield = styled.div`
     padding: ${({ theme }) => theme.spacing.padding};
     margin: ${({ theme }) => theme.spacing.margin};
     box-shadow: ${({ theme }) => theme.boxShadow};
-    background-color: ${({ theme }) => theme.background.colorDimmed};
+    background-color: ${({ theme }) => theme.background.colorMineralGreen};
     transition: 300ms;
 
     &:focus {
