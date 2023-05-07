@@ -40,7 +40,12 @@ export const theme = {
     radius: "5px"
   },
 
-  spacing: {
+  spacingBoxes: {
+    margin: "0px",
+    padding: "20px"
+  },
+
+  spacingElements: {
     margin: "10px",
     padding: "20px"
   },

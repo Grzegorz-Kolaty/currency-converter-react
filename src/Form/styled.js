@@ -6,11 +6,11 @@ export const Formular = styled.form`
 `;
 
 export const Fieldset = styled.fieldset`
+    ${({ theme }) => theme.spacingBoxes};
     color: ${({ theme }) => theme.font.color};
     font-weight: ${({ theme }) => theme.font.weight};
     border: ${({ theme }) => theme.border.style};
     border-radius: ${({ theme }) => theme.border.radius};
-    padding: ${({ theme }) => theme.spacing.padding};
     background-color: ${({ theme }) => theme.background.colorDimmed};
     
     box-shadow: ${({ theme }) => theme.boxShadow};
@@ -22,9 +22,9 @@ export const Fieldset = styled.fieldset`
 `;
 
 export const Legend = styled.legend`
+    ${({ theme }) => theme.spacingElements};
     border: ${({ theme }) => theme.border.style};
     border-radius: ${({ theme }) => theme.border.radius};
-    padding: ${({ theme }) => theme.spacing.padding};
     background-color: ${({ theme }) => theme.background.colorTeal};
 `;
 
@@ -40,12 +40,11 @@ export const Label = styled.label`
 `;
 
 export const Datafield = styled.div`
+    ${({ theme }) => theme.spacingElements};
     color: ${({ theme }) => theme.font.color};
     font-weight: ${({ theme }) => theme.font.weight};
     border: ${({ theme }) => theme.border.style};
     border-radius: ${({ theme }) => theme.border.radius};
-    padding: ${({ theme }) => theme.spacing.padding};
-    margin: ${({ theme }) => theme.spacing.margin};
     box-shadow: ${({ theme }) => theme.boxShadow};
     background-color: ${({ theme }) => theme.background.colorMineralGreen};
     transition: 300ms;
