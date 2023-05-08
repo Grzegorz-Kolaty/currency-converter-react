@@ -1,7 +1,7 @@
 import { useCurrentDate } from "./useCurrentDate";
 import { StyledDate } from "./styled";
 
-const DateFormatted = (date) => {
+const dateFormatted = (date) => {
   return date.toLocaleDateString("pl-PL", {
     weekday: "long",
     day: "numeric",
@@ -15,7 +15,7 @@ const DateComponent = () => {
   const { date } = useCurrentDate();
 
   return (
-    <StyledDate>Dzisiaj jest&nbsp;{DateFormatted(date)}</StyledDate>
+    <StyledDate>Dzisiaj jest&nbsp;{dateFormatted(date)}</StyledDate>
   );
 };
 

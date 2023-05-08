@@ -35,7 +35,7 @@ export const Label = styled.label`
     flex-grow: 1;
 
     ${({ submitter }) => submitter && css`
-    min-width: 100%;
+        min-width: 100%;
     `}
 `;
 
@@ -50,22 +50,19 @@ export const Datafield = styled.div`
     transition: 300ms;
 
     &:focus {
-    outline: ${({ theme }) => theme.border.style};
+        outline: ${({ theme }) => theme.border.style};
     }
 
     &:hover {
-    cursor: pointer;
+        cursor: pointer;
+        filter: brightness(120%);
     }
 
     ${({ button }) => button && css`
-    background-color: ${({ theme }) => theme.background.colorTeal};
-
-    &:hover {
-    background-color: ${({ theme }) => theme.background.colorTealBrighter};
-    }
+        background-color: ${({ theme }) => theme.background.colorTeal};
 
     &:active {
-    background-color: ${({ theme }) => theme.background.colorTransparent};
+        background-color: ${({ theme }) => theme.background.colorTransparent};
     }
 
     `}
