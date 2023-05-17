@@ -1,14 +1,15 @@
 import { Formular, Fieldset, Legend, Label, Datafield } from "./styled";
 import { useState, useRef } from 'react';
-import { currencies } from './currencies';
 import Date from "./Date";
-
+import { useApiData } from './useApiData';
 
 const Form =
   ({ setResult }) => {
+    const { currencies } = useApiData();
+    console.log(currencies);
     const [addAmount, setAmount] = useState(10);
-    const [currencyIn, currencyInValue] = useState(currencies[0].value);
-    const [currencyOut, currencyOutValue] = useState(currencies[0].value);
+    const [currencyIn, currencyInValue] = useState(currencies.base);
+    const [currencyOut, currencyOutValue] = useState(currencies.base);
     const inputRef = useRef(null);
     const focusInput = () => {
       inputRef.current.focus();
@@ -51,7 +52,7 @@ const Form =
               onChange={({ target }) => {
                 currencyInValue(target.value);
               }}>
-              {currencies.map((currency) => (
+              {currencies.rates.map((currency) => (
                 <option key={currency.id} value={currency.value}>
                   {currency.name}
                 </option>
@@ -69,7 +70,7 @@ const Form =
               onChange={({ target }) => {
                 currencyOutValue(target.value);
               }}>
-              {currencies.map((currency) => (
+              {currencies.rates.map((currency) => (
                 <option key={currency.id} value={currency.value}>
                   {currency.name}
                 </option>
