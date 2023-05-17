@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 
-const PUBLIC_API_URL = "123https://api.exchangerate.host/latest?base=PLN"
+const PUBLIC_API_URL = "https://api.exchangerate.host/latest?base=PLN";
 
 export const useApiData = () => {
-  const [currencies, setCurrencies]
-    = useState({ success: false, base: "", date: "", rates: [] });
+  const [currencies, setCurrencies] = useState({
+    base: "",
+    date: "",
+    rates: [],
+    loading: "inProgress"
+  });
 
   useEffect(() => {
     const getCurrencies = async () => {
@@ -14,14 +18,19 @@ export const useApiData = () => {
           throw new Error(response.statusText);
         }
 
-        setCurrencies(await response.json());
-
+        const data = await response.json();
+        setCurrencies({
+          base: data.base,
+          date: data.date,
+          rates: data.rates,
+          loading: "success"
+        });
       } catch (error) {
         setCurrencies({
           error: error.message,
-          success: false
+          loading: "error"
         });
-      };
+      }
     };
 
     setTimeout(getCurrencies, 2500);
