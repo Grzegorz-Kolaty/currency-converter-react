@@ -4,10 +4,10 @@ const PUBLIC_API_URL = "https://api.exchangerate.host/latest?base=PLN";
 
 export const useApiData = () => {
   const [currencies, setCurrencies] = useState({
+    loading: "inProgress",
     base: "",
     date: "",
-    rates: undefined,
-    loading: "inProgress"
+    rates: undefined
   });
 
   useEffect(() => {
@@ -15,7 +15,8 @@ export const useApiData = () => {
       try {
         const response = await fetch(PUBLIC_API_URL);
         if (!response.ok) {
-          throw new Error(response.statusText);
+          console.log(response.ok);
+          throw new Error(response.statusText)
         }
 
         const data = await response.json();
@@ -27,8 +28,8 @@ export const useApiData = () => {
         });
       } catch (error) {
         setCurrencies({
-          error: error.message,
-          loading: "error"
+          loading: "error",
+          error: error
         });
       };
     };
