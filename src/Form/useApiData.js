@@ -6,7 +6,7 @@ export const useApiData = () => {
   const [currencies, setCurrencies] = useState({
     base: "",
     date: "",
-    rates: [],
+    rates: undefined,
     loading: "inProgress"
   });
 
@@ -20,17 +20,17 @@ export const useApiData = () => {
 
         const data = await response.json();
         setCurrencies({
+          loading: "success",
           base: data.base,
           date: data.date,
-          rates: data.rates,
-          loading: "success"
+          rates: Object.entries(data.rates).map(([name, value]) => ({ name, value })),
         });
       } catch (error) {
         setCurrencies({
           error: error.message,
           loading: "error"
         });
-      }
+      };
     };
 
     setTimeout(getCurrencies, 2500);
