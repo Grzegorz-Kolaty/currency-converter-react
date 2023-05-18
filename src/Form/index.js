@@ -14,13 +14,10 @@ const Form =
     const onFormSubmit = (event) => {
       event.preventDefault();
       const result = (+addAmount * +currencyIn / +currencyOut);
-      setAmount("");
 
       setResult({
         calculatedResult: result,
-        currencyOutName:
-          currencies.rates.find(currency => currency === +currencyOut)
-          || "PLN"
+        currencyOutName: currencies.rates.find(currency => currency.value === +currencyOut)
       });
     };
 
