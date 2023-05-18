@@ -6,21 +6,34 @@ export const Formular = styled.form`
     background-color: ${({ theme }) => theme.background.colorTransparent};
     border-radius: ${({ theme }) => theme.border.radius};
     background-color: ${({ theme }) => theme.background.colorDimmed};
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
     min-height: 380px;
 `;
+
+export const Error = styled(Formular)`
+    ${({ theme }) => theme.spacingBoxes};
+    background-color: ${({ theme }) => theme.background.colorTransparent};
+    border-radius: ${({ theme }) => theme.border.radius};
+    background-color: hsla(0, 61%, 20%, 0.551);
+    min-height: 380px;
+`
 
 export const Loader = styled(Formular)`
     background-image: url("${loading}");
     background-repeat: no-repeat;
     background-position: center;
-`
+`;
+
+
 
 export const Fieldset = styled.fieldset`
     ${({ theme }) => theme.spacingBoxes};
     color: ${({ theme }) => theme.font.color};
     font-weight: ${({ theme }) => theme.font.weight};
     border: ${({ theme }) => theme.border.style};
-    
     display: flex;
     flex-flow: wrap row;
     justify-content: center;

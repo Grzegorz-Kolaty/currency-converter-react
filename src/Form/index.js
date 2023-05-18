@@ -1,4 +1,4 @@
-import { Formular, Loader, Fieldset, Legend, Label, Datafield } from "./styled";
+import { Formular, Loader, Error, Fieldset, Legend, Label, Datafield } from "./styled";
 import { useState } from 'react';
 import Date from "./Date";
 import { useApiData } from './useApiData';
@@ -26,6 +26,10 @@ const Form =
       currencyOutValue(currencyIn);
     };
 
+    const refreshPage = () => {
+      window.location.reload(false);
+    }
+
     if (currencies.loading === "inProgress") {
       return (
         <Loader />
@@ -34,10 +38,12 @@ const Form =
 
     if (currencies.loading === "error") {
       return (
-        <Formular>An error has occured, please check it out:
-          <br />
-          {currencies.error}
-        </Formular>
+        <Error>
+          <i>An error has occurred, please check it out:</i><br />
+          Error type: <b>{currencies.error.name}</b><br />
+          Error content: <b>{currencies.error.message}</b>
+          <Datafield as="button" onClick={refreshPage}>Try Again!</Datafield>
+        </Error>
       );
     };
 
@@ -93,7 +99,7 @@ const Form =
               </Datafield>
             </Label>
           </Fieldset>
-        </Formular >
+        </Formular>
       );
     };
   };
