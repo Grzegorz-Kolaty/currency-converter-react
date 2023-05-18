@@ -1,5 +1,5 @@
 import { Formular, Fieldset, Legend, Label, Datafield } from "./styled";
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Date from "./Date";
 import { useApiData } from './useApiData';
 
@@ -8,22 +8,19 @@ const Form =
     const { currencies } = useApiData();
     console.log(currencies);
     const [addAmount, setAmount] = useState(10);
-    const [currencyIn, currencyInValue] = useState(currencies.base);
-    const [currencyOut, currencyOutValue] = useState(currencies.base);
-    const inputRef = useRef(null);
-    const focusInput = () => {
-      inputRef.current.focus();
-    };
+    const [currencyIn, currencyInValue] = useState(1);
+    const [currencyOut, currencyOutValue] = useState(1);
 
     const onFormSubmit = (event) => {
       event.preventDefault();
       const result = (+addAmount * +currencyIn / +currencyOut);
-      const currencyOutName = currencies.find(currency => currency.value === +currencyOut);
       setAmount("");
 
       setResult({
         calculatedResult: result,
-        currencyOutName: currencyOutName.name
+        currencyOutName:
+          currencies.rates.find(currency => currency === +currencyOut)
+          || "PLN"
       });
     };
 
@@ -60,17 +57,16 @@ const Form =
                 className="form__input"
                 type="number"
                 min="1"
-                step="any"
-                ref={inputRef} />
+                step="any" />
             </Label>
             <Label>Currency
               <Datafield as="select" value={currencyIn}
                 onChange={({ target }) => {
                   currencyInValue(target.value);
                 }}>
-                {currencies.rates.map((currency) => (
-                  <option key={currency.id} value={currency.value}>
-                    {currency.name}
+                {(currencies.rates).map((currencyIn, index) => (
+                  <option key={index} value={currencyIn.value}>
+                    {currencyIn.name}
                   </option>
                 ))}
               </Datafield>
@@ -86,16 +82,16 @@ const Form =
                 onChange={({ target }) => {
                   currencyOutValue(target.value);
                 }}>
-                {currencies.rates.map((currency) => (
-                  <option key={currency.id} value={currency.value}>
-                    {currency.name}
+                {(currencies.rates).map((currencyOut, index) => (
+                  <option key={index} value={currencyOut.value}>
+                    {currencyOut.name}
                   </option>
                 ))}
               </Datafield>
             </Label>
             <Label submitter>
-              <Datafield button as="button"
-                onClick={focusInput}>Calculate
+              <Datafield button as="button">
+                Calculate
               </Datafield>
             </Label>
           </Fieldset>
