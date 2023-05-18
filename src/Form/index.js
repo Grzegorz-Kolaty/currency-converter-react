@@ -90,7 +90,8 @@ const Form =
               </Datafield>
             </Label>
             <Label submitter>
-              <Datafield button as="button">
+              <Datafield button as="button"
+                onClick={onFormSubmit}>
                 Calculate
               </Datafield>
             </Label>
