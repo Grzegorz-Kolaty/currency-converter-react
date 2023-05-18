@@ -1,19 +1,26 @@
 import styled, { css } from "styled-components";
+import loading from "./loading.gif";
 
 export const Formular = styled.form`
-    margin-bottom: 20px;
+    ${({ theme }) => theme.spacingBoxes};
     background-color: ${({ theme }) => theme.background.colorTransparent};
+    border-radius: ${({ theme }) => theme.border.radius};
+    background-color: ${({ theme }) => theme.background.colorDimmed};
+    min-height: 380px;
 `;
+
+export const Loader = styled(Formular)`
+    background-image: url("${loading}");
+    background-repeat: no-repeat;
+    background-position: center;
+`
 
 export const Fieldset = styled.fieldset`
     ${({ theme }) => theme.spacingBoxes};
     color: ${({ theme }) => theme.font.color};
     font-weight: ${({ theme }) => theme.font.weight};
     border: ${({ theme }) => theme.border.style};
-    border-radius: ${({ theme }) => theme.border.radius};
-    background-color: ${({ theme }) => theme.background.colorDimmed};
     
-    box-shadow: ${({ theme }) => theme.boxShadow};
     display: flex;
     flex-flow: wrap row;
     justify-content: center;

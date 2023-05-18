@@ -1,4 +1,4 @@
-import { Formular, Fieldset, Legend, Label, Datafield } from "./styled";
+import { Formular, Loader, Fieldset, Legend, Label, Datafield } from "./styled";
 import { useState } from 'react';
 import Date from "./Date";
 import { useApiData } from './useApiData';
@@ -28,7 +28,7 @@ const Form =
 
     if (currencies.loading === "inProgress") {
       return (
-        <Formular>Loading calculating engine, please wait!</Formular>
+        <Loader />
       );
     };
 
