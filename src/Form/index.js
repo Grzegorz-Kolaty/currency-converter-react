@@ -6,18 +6,18 @@ import { useApiData } from './useApiData';
 const Form =
   ({ setResult }) => {
     const { currencies } = useApiData();
-    console.log(currencies);
-    const [addAmount, setAmount] = useState(10);
+    const [amount, setAmount] = useState(10);
     const [currencyIn, currencyInValue] = useState(1);
     const [currencyOut, currencyOutValue] = useState(1);
 
     const onFormSubmit = (event) => {
       event.preventDefault();
-      const result = (+addAmount * +currencyIn / +currencyOut);
+      const result = amount * (currencyOut / currencyIn);
 
       setResult({
         calculatedResult: result,
-        currencyOutName: currencies.rates.find(currency => currency.value === +currencyOut)
+        currencyOutName: currencies.rates.find(currency => currency.value === +currencyOut),
+        ratesDate: currencies.date
       });
     };
 
@@ -55,7 +55,7 @@ const Form =
             <Legend>Currency calculator</Legend>
             <Label>Amount
               <Datafield as="input"
-                value={addAmount}
+                value={amount}
                 onChange={({ target }) => setAmount(target.value)}
                 className="form__input"
                 type="number"
