@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const PUBLIC_API_URL = "https://api.exchangerate.host/latest?base=PLN";
 
@@ -13,13 +14,8 @@ export const useApiData = () => {
   useEffect(() => {
     const getCurrencies = async () => {
       try {
-        const response = await fetch(PUBLIC_API_URL);
-        if (!response.ok) {
-          console.log(response.ok);
-          throw new Error(response.statusText)
-        }
-
-        const data = await response.json();
+        const response = await axios.get(PUBLIC_API_URL);
+        const { data } = response;
         setCurrencies({
           loading: "success",
           base: data.base,
@@ -31,7 +27,7 @@ export const useApiData = () => {
           loading: "error",
           error: error
         });
-      };
+      }
     };
 
     setTimeout(getCurrencies, 2500);
