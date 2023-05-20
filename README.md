@@ -19,12 +19,11 @@ Currency converter, no React! 👆 https://grzegorz-kolaty.github.io/currency-co
 
 ## ⚙ Used technologies and languages
 
-- HTML,
-- CSS,
-- BEM,
+- HTML, CSS, BEM,
 - Flex, Grid, OpenGraph,
-- JavaScript,
-- ES6+ features,
+- JavaScript, ES6+ features,
+- StyledComponents, Error Handling, 
+- API usage
 - projects are DesktopFirst (not MobileFirst) but completly adjusted for smartphones!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
