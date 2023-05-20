@@ -30,13 +30,13 @@ const Form =
       window.location.reload(false);
     }
 
-    if (currencies.loading === "inProgress") {
+    if (currencies.state === "inProgress") {
       return (
         <Loader />
       );
     };
 
-    if (currencies.loading === "error") {
+    if (currencies.state === "error") {
       return (
         <Error>
           <i>An error has occurred, please check it out:</i><br />
@@ -47,61 +47,59 @@ const Form =
       );
     };
 
-    if (currencies.loading === "success") {
-      return (
-        <Formular onSubmit={onFormSubmit}>
-          <Date />
-          <Fieldset>
-            <Legend>Currency calculator</Legend>
-            <Label>Amount
-              <Datafield as="input"
-                value={amount}
-                onChange={({ target }) => setAmount(target.value)}
-                className="form__input"
-                type="number"
-                min="1"
-                step="any" />
-            </Label>
-            <Label>Currency
-              <Datafield as="select" value={currencyIn}
-                onChange={({ target }) => {
-                  currencyInValue(target.value);
-                }}>
-                {(currencies.rates).map((currencyIn, index) => (
-                  <option key={index} value={currencyIn.value}>
-                    {currencyIn.name}
-                  </option>
-                ))}
-              </Datafield>
-            </Label>
-            <Label>Switch
-              <Datafield button as="button"
-                onClick={switchCurrencies}>
-                &#8596;
-              </Datafield>
-            </Label>
-            <Label>Exchange
-              <Datafield as="select" value={currencyOut}
-                onChange={({ target }) => {
-                  currencyOutValue(target.value);
-                }}>
-                {(currencies.rates).map((currencyOut, index) => (
-                  <option key={index} value={currencyOut.value}>
-                    {currencyOut.name}
-                  </option>
-                ))}
-              </Datafield>
-            </Label>
-            <Label submitter>
-              <Datafield button as="button"
-                onClick={onFormSubmit}>
-                Calculate
-              </Datafield>
-            </Label>
-          </Fieldset>
-        </Formular>
-      );
-    };
+    return (
+      <Formular onSubmit={onFormSubmit}>
+        <Date />
+        <Fieldset>
+          <Legend>Currency calculator</Legend>
+          <Label>Amount
+            <Datafield as="input"
+              value={amount}
+              onChange={({ target }) => setAmount(target.value)}
+              className="form__input"
+              type="number"
+              min="1"
+              step="any" />
+          </Label>
+          <Label>Currency
+            <Datafield as="select" value={currencyIn}
+              onChange={({ target }) => {
+                currencyInValue(target.value);
+              }}>
+              {(currencies.rates).map((currencyIn, index) => (
+                <option key={index} value={currencyIn.value}>
+                  {currencyIn.name}
+                </option>
+              ))}
+            </Datafield>
+          </Label>
+          <Label>Switch
+            <Datafield button as="button"
+              onClick={switchCurrencies}>
+              &#8596;
+            </Datafield>
+          </Label>
+          <Label>Exchange
+            <Datafield as="select" value={currencyOut}
+              onChange={({ target }) => {
+                currencyOutValue(target.value);
+              }}>
+              {(currencies.rates).map((currencyOut, index) => (
+                <option key={index} value={currencyOut.value}>
+                  {currencyOut.name}
+                </option>
+              ))}
+            </Datafield>
+          </Label>
+          <Label submitter>
+            <Datafield button as="button"
+              onClick={onFormSubmit}>
+              Calculate
+            </Datafield>
+          </Label>
+        </Fieldset>
+      </Formular>
+    );
   };
 
 export default Form;

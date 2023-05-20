@@ -5,7 +5,7 @@ const PUBLIC_API_URL = "https://api.exchangerate.host/latest?base=PLN";
 
 export const useApiData = () => {
   const [currencies, setCurrencies] = useState({
-    loading: "inProgress",
+    state: "inProgress",
     base: "",
     date: "",
     rates: undefined
@@ -17,7 +17,7 @@ export const useApiData = () => {
         .then(response => {
           const { data } = response;
           setCurrencies({
-            loading: "success",
+            state: "success",
             base: data.base,
             date: data.date,
             rates: Object.entries(data.rates).map(([name, value]) => ({ name, value })),
@@ -25,7 +25,7 @@ export const useApiData = () => {
         })
         .catch(error => {
           setCurrencies({
-            loading: "error",
+            state: "error",
             error: error
           });
         });
